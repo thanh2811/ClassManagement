@@ -1,11 +1,13 @@
 package com.example.dclassmanagement.ui.base
 
+import com.example.dclassmanagement.data.model.ActionWrapper
+
 interface ActionExecutor {
-    fun dispatch()
+    fun dispatch(actionWrapper: ActionWrapper?)
 }
 
-class ActionDispatcher(val actionExecutor: ActionExecutor){
-    fun dispatch(){
-        actionExecutor.dispatch()
+class ActionDispatcher(private val actionExecutor: ActionExecutor){
+    fun dispatch(actionWrapper: ActionWrapper? = null){
+        actionExecutor.dispatch(actionWrapper)
     }
 }

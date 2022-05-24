@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.class_detail.FragmentClassDetail">
+
+
+            <ImageView
+                android:id="@+id/iv_class_thumb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d200"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_group_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/d5"
+                android:text="GroupName"
+                android:textAppearance="@style/TextAppearanceTitle"
+                android:textSize="@dimen/s25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_class_thumb" />
+
+            <TextView
+                android:id="@+id/tv_class_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GroupOwner"
+                android:padding="@dimen/d5"
+                android:textAppearance="@style/TextAppearancePrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_group_name" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:layout_marginTop="@dimen/d15"
+                android:background="#EFEFEF"
+                app:layout_constraintTop_toBottomOf="@id/tv_class_owner" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_user"
+                android:layout_width="@dimen/d50"
+                android:layout_height="@dimen/d50"
+                android:layout_marginHorizontal="@dimen/d5"
+                android:layout_marginTop="@dimen/d15"
+                android:src="@drawable/ic_person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v1" />
+
+            <EditText
+                android:id="@+id/et_post_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_primary_edt"
+                android:fontFamily="@font/inter_regular"
+                android:hint="Tạo bài viết trong nhóm..."
+                android:padding="@dimen/d15"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/s15"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="@dimen/d8"
+                android:layout_margin="@dimen/d2"
+                app:layout_constraintStart_toEndOf="@+id/iv_user"
+                app:layout_constraintTop_toTopOf="@+id/iv_user" />
+
+            <ImageView
+                android:id="@+id/iv_image_pick"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/d5"
+                android:src="@drawable/ic_image"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_post"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bt_post" />
+
+
+            <ImageView
+                android:id="@+id/iv_gif_pick"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/d15"
+                android:src="@drawable/ic_gif"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_post"
+                app:layout_constraintStart_toEndOf="@+id/iv_image_pick"
+                app:layout_constraintTop_toTopOf="@+id/bt_post" />
+
+            <ImageView
+                android:id="@+id/iv_emoji_pick"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/d15"
+                android:src="@drawable/ic_emoji"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_post"
+                app:layout_constraintStart_toEndOf="@+id/iv_gif_pick"
+                app:layout_constraintTop_toTopOf="@+id/bt_post" />
+
+            <Button
+                android:id="@+id/bt_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d15"
+                android:background="@drawable/bg_primary_btn"
+                android:text="Post"
+                android:layout_marginHorizontal="@dimen/d5"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_post_status" />
+
+            <View
+                android:id="@+id/v2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:layout_marginTop="@dimen/d15"
+                android:background="#EFEFEF"
+                app:layout_constraintTop_toBottomOf="@+id/bt_post"
+                tools:layout_editor_absoluteX="5dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/d15"
+                android:layout_marginStart="@dimen/d5"
+                android:text="Discussion"
+                android:textAppearance="@style/TextAppearanceTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v2" />
+
+            <View
+                android:id="@+id/v3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:layout_marginTop="@dimen/d15"
+                android:background="#EFEFEF"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:layout_editor_absoluteX="5dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:background="#EFEFEF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

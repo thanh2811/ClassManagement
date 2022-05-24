@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/d8"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_comment_user"
+        android:layout_width="@dimen/d40"
+        android:layout_height="@dimen/d40"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_comment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="@dimen/s15"
+        android:layout_marginStart="@dimen/d5"
+        android:textAppearance="@style/TextAppearanceTitle"
+        app:layout_constraintStart_toEndOf="@+id/iv_comment_user"
+        app:layout_constraintTop_toTopOf="@+id/iv_comment_user" />
+
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_comment"
+        android:padding="@dimen/d8"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearancePrimary"
+        android:textSize="@dimen/s15"
+        app:layout_constraintStart_toStartOf="@+id/tv_comment_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_username" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

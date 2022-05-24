@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.dclassmanagement.MainActivity
 import com.example.dclassmanagement.R
 import com.example.dclassmanagement.databinding.ActivityLoginBinding
 import com.example.dclassmanagement.ui.base.BaseActivity
@@ -40,7 +41,7 @@ class LoginActivity : BaseActivity() {
                 mAuth.signInWithEmailAndPassword(email, pass)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            startActivity(Intent(this@LoginActivity, LandingPageActivity::class.java))
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
                         } else {
                             showToast(task.exception?.message.toString())

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentLandingPage">
+
+    <fragment
+        android:id="@+id/fragmentLandingPage"
+        android:name="com.example.dclassmanagement.ui.landing_page.FragmentLandingPage"
+        android:label="fragment_landing_page"
+        tools:layout="@layout/fragment_landing_page" >
+        <action
+            android:id="@+id/action_fragmentLandingPage_to_fragmentClassDetail"
+            app:destination="@id/fragmentClassDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.dclassmanagement.ui.class_detail.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentClassDetail"
+        android:name="com.example.dclassmanagement.ui.class_detail.FragmentClassDetail"
+        android:label="fragment_class_detail"
+        tools:layout="@layout/fragment_class_detail" >
+        <action
+            android:id="@+id/action_fragmentClassDetail_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_fragmentClassDetail_to_fragmentAssignment"
+            app:destination="@id/fragmentAssignment" />
+        <action
+            android:id="@+id/action_fragmentClassDetail_to_fragmentMember"
+            app:destination="@id/fragmentMember" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMember"
+        android:name="com.example.dclassmanagement.ui.class_detail.FragmentMember"
+        android:label="FragmentMember" />
+    <fragment
+        android:id="@+id/fragmentAssignment"
+        android:name="com.example.dclassmanagement.ui.class_detail.FragmentAssignment"
+        android:label="FragmentAssignment" />
+    <fragment
+        android:id="@+id/fragmentComment"
+        android:name="com.example.dclassmanagement.ui.comment.FragmentComment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" />
+</navigation>
