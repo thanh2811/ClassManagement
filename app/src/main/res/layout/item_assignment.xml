@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/d8"
+    android:background="@drawable/bg_card_item"
+    android:layout_margin="@dimen/d5"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_comment_user"
+        android:layout_width="@dimen/d40"
+        android:layout_height="@dimen/d40"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_baseline_assignment_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="@dimen/d30"
+        android:layout_height="@dimen/d30"
+        android:src="@drawable/ic_baseline_done_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_assignment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="@dimen/s15"
+        android:layout_marginStart="@dimen/d5"
+        android:textAppearance="@style/TextAppearanceTitle"
+        app:layout_constraintStart_toEndOf="@+id/iv_comment_user"
+        app:layout_constraintTop_toTopOf="@+id/iv_comment_user" />
+
+    <TextView
+        android:id="@+id/tv_assignment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearancePrimary"
+        android:textColor="@color/low_priority"
+        android:textSize="@dimen/s15"
+        app:layout_constraintStart_toStartOf="@+id/tv_assignment_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_assignment_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

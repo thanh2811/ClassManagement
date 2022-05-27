@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_fragmentLandingPage_to_fragmentClassDetail"
             app:destination="@id/fragmentClassDetail" />
+        <action
+            android:id="@+id/action_fragmentLandingPage_to_loginActivity"
+            app:destination="@id/loginActivity"
+            app:popUpTo="@id/fragmentLandingPage"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/fragmentHome"
@@ -37,15 +43,36 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentMember"
-        android:name="com.example.dclassmanagement.ui.class_detail.FragmentMember"
+        android:name="com.example.dclassmanagement.ui.member.FragmentMember"
         android:label="FragmentMember" />
     <fragment
         android:id="@+id/fragmentAssignment"
-        android:name="com.example.dclassmanagement.ui.class_detail.FragmentAssignment"
+        android:name="com.example.dclassmanagement.ui.assignment.FragmentAssignment"
         android:label="FragmentAssignment" />
     <fragment
         android:id="@+id/fragmentComment"
         android:name="com.example.dclassmanagement.ui.comment.FragmentComment"
         android:label="fragment_comment"
         tools:layout="@layout/fragment_comment" />
+    <fragment
+        android:id="@+id/fragmentAssignmentDetail"
+        android:name="com.example.dclassmanagement.ui.assignment.FragmentAssignmentDetail"
+        android:label="fragment_assignment_detail"
+        tools:layout="@layout/fragment_assignment_detail" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.dclassmanagement.ui.auth.LoginActivity"
+        android:label="LoginActivity" />
+    <fragment
+        android:id="@+id/fragmentAddMember"
+        android:name="com.example.dclassmanagement.ui.member.FragmentAddMember"
+        android:label="FragmentAddMember" />
+    <fragment
+        android:id="@+id/fragmentChat"
+        android:name="com.example.dclassmanagement.ui.chat.FragmentChat"
+        android:label="FragmentChat" />
+    <fragment
+        android:id="@+id/fragmentMessage"
+        android:name="com.example.dclassmanagement.ui.chat.FragmentMessage"
+        android:label="FragmentMessage" />
 </navigation>

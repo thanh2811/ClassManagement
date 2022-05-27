@@ -7,6 +7,15 @@ object Action {
         const val PICK_CLASS = "PICK_CLASS"
         const val LIKE_POST = "LIKE_POST"
         const val COMMENT_POST = "COMMENT_POST"
+        const val ITEM_CHECK = "ITEM_CHECK"
+        const val ITEM_UNCHECK = "ITEM_UNCHECK"
+    }
+}
+
+object FragmentChatARGS{
+    object KEY{
+        const val USER = "USER"
+        const val USER_ID = "USER_ID"
     }
 }
 
@@ -24,6 +33,12 @@ object FragmentHomeARGS{
     }
 }
 
+object FragmentAssignmentARGS{
+    object KEY{
+        const val ASSIGNMENT = "ASSIGNMENT"
+    }
+}
+
 object Table{
     const val USER_CLASS = "UserClass"
     const val USER = "User"
@@ -31,4 +46,8 @@ object Table{
     const val POST = "Post"
     const val COMMENT = "Comment"
     const val LIKE = "Like"
+    const val ASSIGNMENT = "Assignment"
+    const val ASSIGNMENT_USER = "AssignmentUser"
+    const val CHAT = "Chat"
+    const val MESSAGE = "Message"
 }

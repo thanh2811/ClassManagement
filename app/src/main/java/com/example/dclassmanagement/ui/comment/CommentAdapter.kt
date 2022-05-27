@@ -51,7 +51,7 @@ class CommentAdapter constructor(
             itemView.tv_comment_content.text = item.content
 
             // who is the commenter
-            userRef.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).addListenerForSingleValueEvent(
+            userRef.child(item.userId).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val user = snapshot.getValue(User::class.java)

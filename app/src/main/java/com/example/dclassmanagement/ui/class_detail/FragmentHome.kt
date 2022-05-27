@@ -1,5 +1,8 @@
 package com.example.dclassmanagement.ui.class_detail
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -26,6 +29,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 
 class FragmentHome : BaseFragment() {
 
@@ -33,12 +37,18 @@ class FragmentHome : BaseFragment() {
 
     private val classRef = FirebaseDatabase.getInstance().getReference(Table.CLASS)
     private val userRef = FirebaseDatabase.getInstance().getReference(Table.USER)
+    private val userClassRef = FirebaseDatabase.getInstance().getReference(Table.USER_CLASS)
     private val postRef = FirebaseDatabase.getInstance().getReference(Table.POST)
     private val likeRef = FirebaseDatabase.getInstance().getReference(Table.LIKE)
     private val firebaseUser = FirebaseAuth.getInstance().currentUser
     private var postList = mutableListOf<Post>()
     var classId = ""
     var ownerId = ""
+
+    //firebase Storage
+    private val storageRef = FirebaseStorage.getInstance()
+    private var selectedFile: Uri? = null
+
 
     private lateinit var postAdapter: PostAdapter
 
@@ -99,9 +109,10 @@ class FragmentHome : BaseFragment() {
     override fun initView() {
         super.initView()
 
+        postList.clear()
         Log.d("abcabsbdasd", "initView")
         postAdapter = PostAdapter(actionDispatcher, postList)
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
         binding.rvPost.layoutManager = layoutManager
         binding.rvPost.adapter = postAdapter
 
@@ -149,6 +160,8 @@ class FragmentHome : BaseFragment() {
         postRef.orderByChild("classId").equalTo(classId)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    val oldSize = postList.size
+                    postList.clear()
                     snapshot.children.forEach {
                         val post = it.getValue(Post::class.java)
                         if (post != null) {
@@ -156,8 +169,7 @@ class FragmentHome : BaseFragment() {
 
                         }
                     }
-                    postAdapter.notifyItemInserted(postList.size)
-
+                    postAdapter.notifyItemRangeInserted(oldSize,postList.size - oldSize)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -165,7 +177,18 @@ class FragmentHome : BaseFragment() {
                 }
 
             })
+        userClassRef.orderByChild("classId").equalTo(classId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    binding.tvMemNumber.text = snapshot.childrenCount.toString() + " thành viên"
+                }
 
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            }
+            )
 
     }
 
@@ -184,21 +207,66 @@ class FragmentHome : BaseFragment() {
                 val createdDate = System.currentTimeMillis()
 
                 val postData = Post(postId, ownerId, classId, type, thumb, content, createdDate)
+                submitFile(postData)
 
-
-                postRef.push().setValue(postData).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        showToast("Your status is posted successfully!")
-                        binding.etPostStatus.text = Editable.Factory.getInstance().newEditable("")
-
-
-                    }
-                    hideLoading()
-                }
-                val a = 3
             }
+        }
+
+        binding.ivImagePick.setOnClickListener {
+            val intent = Intent()
+                .setType("*/*")
+                .setAction(Intent.ACTION_GET_CONTENT)
+
+            startActivityForResult(Intent.createChooser(intent, "Select a file"), 111)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 111 && resultCode == Activity.RESULT_OK) {
+            selectedFile = data?.data!! //The uri with the location of the file
+            Log.d("selected", selectedFile.toString())
+
         }
     }
 
+    private fun submitFile(postData: Post) {
+        if (selectedFile != null) {
+            val fileRef = storageRef.getReference("Post").child(postData.id)
+                .child(firebaseUser?.uid.toString())
+            fileRef.putFile(selectedFile!!).addOnCompleteListener {
+                    if (it.isSuccessful) {
+
+                        fileRef.downloadUrl.addOnCompleteListener { fileStatus ->
+                            if(fileStatus.isSuccessful){
+                                postData.thumb = fileStatus.result.toString()
+                                postRef.push().setValue(postData).addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        showToast("Your status is posted successfully!")
+                                        binding.etPostStatus.text = Editable.Factory.getInstance().newEditable("")
+
+                                        hideLoading()
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                    }
+                }
+            selectedFile = null
+
+        }else{
+            postRef.push().setValue(postData).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    showToast("Your status is posted successfully!")
+                    binding.etPostStatus.text = Editable.Factory.getInstance().newEditable("")
+
+                    hideLoading()
+                }
+                hideLoading()
+            }
+        }
+    }
 
 }

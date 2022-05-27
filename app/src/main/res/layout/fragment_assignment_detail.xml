@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/d8"
+        tools:context=".ui.assignment.FragmentAssignmentDetail">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/d50"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/bt_submit"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="8dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_assignment_owner"
+                    android:layout_width="@dimen/d40"
+                    android:layout_height="@dimen/d40"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/d8"
+                    android:text="Đăng bởi"
+                    android:textAppearance="@style/TextAppearanceLowPriority"
+                    android:textSize="@dimen/s15"
+                    app:layout_constraintStart_toEndOf="@+id/iv_assignment_owner"
+                    app:layout_constraintTop_toTopOf="@+id/iv_assignment_owner" />
+
+                <TextView
+                    android:id="@+id/tv_agm_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/d8"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearanceTitle"
+                    android:textSize="@dimen/s15"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/tv_agm_created_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/d8"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearanceLowPriority"
+                    android:textSize="@dimen/s15"
+                    app:layout_constraintStart_toEndOf="@+id/iv_assignment_owner"
+                    app:layout_constraintStart_toStartOf="@+id/textView5"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                <View
+                    android:id="@+id/v2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d5"
+                    android:layout_marginTop="@dimen/d8"
+                    android:background="#EFEFEF"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_agm_created_date"
+                    tools:layout_editor_absoluteX="5dp" />
+
+                <TextView
+                    android:id="@+id/tv_agm_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d16"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearanceTitle"
+                    android:textSize="@dimen/s20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v2" />
+
+                <TextView
+                    android:id="@+id/tv_agm_due_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearancePrimary"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_agm_title" />
+
+                <TextView
+                    android:id="@+id/tv_agm_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d8"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearancePrimary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_agm_due_date" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_agm_multi_choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EFEFEF"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_agm_detail" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_choose_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/d8"
+            android:background="@drawable/bg_secondary_btn"
+            android:gravity="center"
+            android:text="Choose file"
+            android:textAppearance="@style/TextAppearancePrimary"
+            android:textColor="@color/white"
+            android:theme="@style/Theme.Material3.Light"
+            app:backgroundTint="@color/color_secondary"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textStart"
+            android:visibility="gone"
+            app:iconPadding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/bt_submit"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d8"
+            android:background="@drawable/bg_primary_btn"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

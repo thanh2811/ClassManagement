@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/d5"
+    android:background="@drawable/bg_card_item"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_chat_user"
+        android:layout_width="@dimen/d40"
+        android:layout_height="@dimen/d40"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="@dimen/s15"
+        android:paddingHorizontal="@dimen/d8"
+        android:textAppearance="@style/TextAppearanceTitle"
+        app:layout_constraintStart_toEndOf="@+id/iv_chat_user"
+        app:layout_constraintTop_toTopOf="@+id/iv_chat_user" />
+
+    <TextView
+        android:id="@+id/tv_last_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d8"
+        android:text="@string/app_name"
+        android:ellipsize="end"
+        android:textAppearance="@style/TextAppearancePrimary"
+        android:textSize="@dimen/s15"
+        app:layout_constraintEnd_toStartOf="@+id/tv_last_sent_date"
+        app:layout_constraintStart_toStartOf="@+id/tv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+    <TextView
+        android:id="@+id/tv_last_sent_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d8"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearancePrimary"
+        android:textSize="@dimen/s13"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+</androidx.constraintlayout.widget.ConstraintLayout>

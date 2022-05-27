@@ -15,6 +15,7 @@ import com.example.dclassmanagement.data.Table
 import com.example.dclassmanagement.data.model.ActionWrapper
 import com.example.dclassmanagement.data.model.Post
 import com.example.dclassmanagement.data.model.User
+import com.example.dclassmanagement.data.utils.Utils
 import com.example.dclassmanagement.data.utils.show
 import com.example.dclassmanagement.ui.base.ActionDispatcher
 import com.google.firebase.database.DataSnapshot
@@ -53,6 +54,7 @@ class PostAdapter constructor(
         @SuppressLint("UseCompatLoadingForDrawables")
         fun bindView(item: Post) {
             itemView.tv_post_content.text = item.content
+            itemView.tv_created_date.text = Utils.getDateFromMillisecond(item.createdDate)
             // set class background
             if (item.thumb.isNotEmpty()) {
                 Glide.with(itemView.context)
@@ -68,7 +70,7 @@ class PostAdapter constructor(
                         if (user?.id == item.ownerId) {
                             itemView.tv_user_full_name.text = user.fullname
                             itemView.tv_user_name.text = user.username
-                            if (user.imageUrl != "default") {
+                            if (user.imageUrl.isNotEmpty()) {
                                 Glide.with(itemView.context)
                                     .load(user.imageUrl)
                                     .into(itemView.iv_user)

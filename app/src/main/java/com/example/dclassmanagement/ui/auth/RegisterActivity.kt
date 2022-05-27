@@ -61,8 +61,8 @@ class RegisterActivity : BaseActivity() {
                     hashMap["username"] = username
                     hashMap["email"] = email
                     hashMap["password"] = password
-                    hashMap["imageUrl"] = "default"
-                    hashMap["background"] = "default"
+                    hashMap["imageUrl"] = ""
+                    hashMap["background"] = ""
                     hashMap["fullname"] = username
                     val hashMap1 = HashMap<String, Int>()
                     hashMap1["avatarId"] = 0

@@ -7,7 +7,7 @@ data class User(
     val id: String,
     val imageUrl: String,
     val password: String,
-    val username: String
+    val username: String,
 ){
     constructor(): this("","","","","","","")
 }

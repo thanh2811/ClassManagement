@@ -7,6 +7,17 @@
     tools:context=".ui.landing_page.FragmentLandingPage">
 
 
+    <TextView
+        android:id="@+id/tv_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d5"
+        android:text="Your class"
+        android:textAppearance="@style/TextAppearanceTitle"
+        android:textSize="@dimen/s20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bt_create_class"
         android:layout_width="wrap_content"
@@ -20,6 +31,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_class"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_class" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

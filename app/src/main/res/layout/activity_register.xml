@@ -24,7 +24,7 @@
             android:layout_marginTop="40dp"
             android:layout_weight="1"
             android:text="Register"
-            android:textColor="#F41010"
+            android:textColor="@color/color_primary"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
-                android:drawableStart="@drawable/ic_person"
+                android:drawableStart="@drawable/ic_profile"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="Username"
@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/bg_secondary_btn"
                 android:text="Register"
                 android:textColor="@color/white" />
         </LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/d8"
+    android:layout_margin="@dimen/d5"
+    android:background="@drawable/bg_card_item"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/cb_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/d5"
+        android:buttonTint="@color/color_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_user"
+        android:layout_width="@dimen/d40"
+        android:layout_height="@dimen/d40"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toEndOf="@+id/cb_add"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_full_name_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:padding="@dimen/d8"
+        android:textSize="@dimen/s15"
+        android:layout_marginStart="@dimen/d5"
+        android:textAppearance="@style/TextAppearanceTitle"
+        app:layout_constraintStart_toEndOf="@+id/iv_user"
+        app:layout_constraintTop_toTopOf="@+id/iv_user" />
+
+    <TextView
+        android:id="@+id/tv_username_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:paddingHorizontal="@dimen/d8"
+        android:textAppearance="@style/TextAppearanceLowPriority"
+        android:textSize="@dimen/s15"
+        app:layout_constraintStart_toStartOf="@+id/tv_full_name_add"
+        app:layout_constraintTop_toBottomOf="@+id/tv_full_name_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

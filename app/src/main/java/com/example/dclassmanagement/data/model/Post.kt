@@ -7,7 +7,7 @@ data class Post(
     val ownerId: String,
     val classId: String,
     val type: Long,
-    val thumb: String,
+    var thumb: String,
     val content: String,
     val createdDate: Long
 ): Serializable{

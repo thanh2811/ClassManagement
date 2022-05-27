@@ -17,4 +17,9 @@
     <dimen name="s13">13sp</dimen>
     <dimen name="d24">24dp</dimen>
     <dimen name="d2">2dp</dimen>
+    <dimen name="navigation_header_height">160dp</dimen>
+    <dimen name="navigation_item_height">48dp</dimen>
+    <dimen name="navigation_item_icon_size">24dp</dimen>
+    <dimen name="d35">35dp</dimen>
+    <dimen name="d80">80dp</dimen>
 </resources>

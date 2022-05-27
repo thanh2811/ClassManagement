@@ -1,5 +1,8 @@
 package com.example.dclassmanagement.data.utils
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 object Utils {
 
     fun createId(): String{
@@ -9,4 +12,10 @@ object Utils {
             .joinToString("")
     }
 
+    fun getDateFromMillisecond(millis: Long): String{
+        val c = Calendar.getInstance()
+        c.timeInMillis = millis
+        val dateFormat = SimpleDateFormat("hh:mm - dd/MM/yyyy")
+        return dateFormat.format(c.time)
+    }
 }

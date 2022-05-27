@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.dclassmanagement.R
 import com.example.dclassmanagement.data.FragmentLandingPageARGS
+import com.example.dclassmanagement.ui.assignment.FragmentAssignment
 import com.example.dclassmanagement.ui.base.BaseFragment
+import com.example.dclassmanagement.ui.member.FragmentMember
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_class_detail.*
 
@@ -43,20 +45,17 @@ class FragmentClassDetail : BaseFragment() {
                 }
                 1 -> {
                     tab.text = "Assignment"
-                    tab.icon = resources.getDrawable(R.drawable.ic_baseline_assignment_24, context?.theme)
+                    tab.icon =
+                        resources.getDrawable(R.drawable.ic_baseline_assignment_24, context?.theme)
                 }
                 2 -> {
                     tab.text = "Member"
-                    tab.icon = resources.getDrawable(R.drawable.ic_baseline_people_24, context?.theme)
+                    tab.icon =
+                        resources.getDrawable(R.drawable.ic_baseline_people_24, context?.theme)
                 }
             }
         }.attach()
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
 
 
 }
@@ -69,7 +68,7 @@ private class CustomViewPagerAdapter(fragment: Fragment, val classId: String, va
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> {
-                val fragmentHome =  FragmentHome()
+                val fragmentHome = FragmentHome()
                 fragmentHome.arguments = bundleOf(
                     FragmentLandingPageARGS.KEY.CLASS_ID to classId,
                     FragmentLandingPageARGS.KEY.OWNER_ID to ownerId
@@ -77,16 +76,18 @@ private class CustomViewPagerAdapter(fragment: Fragment, val classId: String, va
                 return fragmentHome
             }
             1 -> {
-                val fragmentAssignment=  FragmentAssignment()
+                val fragmentAssignment = FragmentAssignment()
                 fragmentAssignment.arguments = bundleOf(
-                    FragmentLandingPageARGS.KEY.CLASS_ID to classId
+                    FragmentLandingPageARGS.KEY.CLASS_ID to classId,
+                    FragmentLandingPageARGS.KEY.OWNER_ID to ownerId
                 )
                 return fragmentAssignment
             }
         }
-        val fragmentMember =  FragmentMember()
+        val fragmentMember = FragmentMember()
         fragmentMember.arguments = bundleOf(
-            FragmentLandingPageARGS.KEY.CLASS_ID to classId
+            FragmentLandingPageARGS.KEY.CLASS_ID to classId,
+            FragmentLandingPageARGS.KEY.OWNER_ID to ownerId
         )
         return fragmentMember
 //        return mCurrentFragment
